@@ -15,6 +15,12 @@ def close(ctx):
     storage.close()
 
 
+@app.errorhandler(404)
+def not_found(error):
+    """ not found """
+    return {"error": "Not found"}
+
+
 if __name__ == "__main__":
 
     if getenv("HBNB_API_HOST"):
