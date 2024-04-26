@@ -1,9 +1,7 @@
 # AirBnB Clone - The Console
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
 
-
 ![AIRBNB_V3!](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/02078cd7f0573885c85a225c7436584a5afea1f9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20240426%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240426T124031Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d5bb40debea6df718243fb40c64c68e3d980871e5b0c9470d1d5ac4a0ca5dd8a)
-
 
 #### Functionalities of this command interpreter:
 * Create a new object (ex: a new User or a new Place)
@@ -158,5 +156,12 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
+Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
+Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+
 AadelAferyad - [Github](https://github.com/AadelAferyad) / [Twitter](https://twitter.com/addel_AF)  
 Liams-theCreator - [Github](https://github.com/Liams-theCreator) / [Twitter](https://twitter.com/liamstheCreator)
+
+Second part of Airbnb: Joann Vuong
+## License
+Public Domain. No copy write protection. 
