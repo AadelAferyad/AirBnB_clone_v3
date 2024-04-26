@@ -25,11 +25,11 @@ def stats():
     count_Amenity = storage.count(Amenity)
     count_Place = storage.count(Place)
     count_Review = storage.count(Review)
-    count_User = storage.count(User) 
+    count_User = storage.count(User)
     return {
         "amenities": count_Amenity,
         "cities": count_City,
         "places": count_Place,
         "reviews": count_Review,
         "states": count_State,
-        "users": count_User,}
+        "users": count_User}
