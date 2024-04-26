@@ -18,6 +18,7 @@ def status():
 
 @app_views.route("/stats", strict_slashes=False, methods=['GET'])
 def stats():
+    """ return count of obj in storage"""
     count_State = storage.count(State)
     count_City = storage.count(City)
     count_Amenity = storage.count(Amenity)
@@ -26,9 +27,8 @@ def stats():
     count_User = storage.count(User) 
     return {
         "amenities": count_Amenity,
-        "amenities": count_City,
+        "cities": count_City,
         "places": count_Place,
         "reviews": count_Review,
         "states": count_State,
-        "users": count_User,
-    }
+        "users": count_User,}
