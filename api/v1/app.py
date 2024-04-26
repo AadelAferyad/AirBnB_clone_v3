@@ -16,10 +16,14 @@ def close(ctx):
 
 
 if __name__ == "__main__":
-    HBNB_API_HOST = getenv('HBNB_API_HOST')
-    HBNB_API_PORT = getenv('HBNB_API_PORT')
-    if HBNB_API_HOST is None:
-        HBNB_API_HOST = "0.0.0.0"
-    if HBNB_API_PORT is None:
-        HBNB_API_PORT = 5000
+
+    if getenv("HBNB_API_HOST"):
+        host = getenv("HBNB_API_HOST")
+    else:
+        host = "0.0.0.0"
+    if getenv("HBNB_API_PORT"):
+        port = int(getenv("HBNB_API_PORT"))
+    else:
+        port = 5000
+
     app.run(host=HBNB_API_HOST, threaded=True)
