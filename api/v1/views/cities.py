@@ -4,7 +4,7 @@ from api.v1.views import app_views
 from models.city import City
 from models.state import State
 from models import storage
-from flask import abort, request, jsonify
+from flask import abort, request, jsonify, make_response
 
 
 @app_views.route("/states/<state_id>/cities", strict_slashes=False,
@@ -40,7 +40,7 @@ def delete_city(city_id):
         abort(404)
     storage.delete(obj)
     storage.save()
-    return (jsonify({}), 200)
+    return make_response(jsonify({}), 200)
 
 
 @app_views.route("/states/<state_id>/cities", strict_slashes=False,
@@ -50,25 +50,31 @@ def add_new_city(state_id):
     obj = storage.get(State, state_id)
     if obj is None:
         abort(404)
-    data = request.get_json(force=True, silent=True)
-    if not data:
+    if not request.get_json():
         abort(400, "Not a JSON")
-    if 'name' not in data:
+    if 'name' not in request.get_json():
         abort(400, "Missing name")
-    new_city = City(state_id=obj.id, **data)
+    data = request.get_json(force=True, silent=True)
+    new_city = City(**data)
+    new_city.state_id = obj.id
     new_city.save()
-    return (jsonify(new_city.to_dict()), 201)
+    return make_response(jsonify(new_city.to_dict()), 201)
 
 
 @app_views.route("/cities/<city_id>", strict_slashes=False, methods=['PUT'])
 def update_city(city_id):
     """ update city"""
     obj = storage.get(City, city_id)
+    key_igonre = ['state_id', 'id', 'updated_at', 'created_at']
     if obj is None:
         abort(404)
-    json_data = request.get_json(force=True, silent=True)
-    if not json_data:
+    if not request.get_json():
         abort(400, "Not a JSON")
-    obj.name = json_data.get("name", obj.name)
+    json_data = request.get_json()
+
+    for k, v in json_data.items():
+        if k not in key_igonre:
+            setattr(obj, k, v)
+
     obj.save()
-    return (jsonify(obj.to_dict()), 200)
+    return make_response(jsonify(obj.to_dict()), 200)
