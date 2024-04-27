@@ -7,7 +7,7 @@ from models import storage
 from flask import abort, request, jsonify
 
 
-@app_views.route("states/<state_id>/cities", strict_slashes=False,
+@app_views.route("/states/<state_id>/cities", strict_slashes=False,
                  methods=['GET'])
 def citiies_from_states(state_id):
     """ retrive cities from state_id"""
@@ -22,7 +22,7 @@ def citiies_from_states(state_id):
     return (jsonify(list_dict_cities))
 
 
-@app_views.route("cities/<city_id>", strict_slashes=False, methods=['GET'])
+@app_views.route("/cities/<city_id>", strict_slashes=False, methods=['GET'])
 def city_with_city_id(city_id):
     """retrive city with city_id"""
     obj = storage.get(City, city_id)
@@ -32,7 +32,7 @@ def city_with_city_id(city_id):
     return (jsonify(city_dic))
 
 
-@app_views.route("cities/<city_id>", strict_slashes=False, methods=['DELETE'])
+@app_views.route("/cities/<city_id>", strict_slashes=False, methods=['DELETE'])
 def delete_city(city_id):
     """ delete city_id """
     obj = storage.get(City, city_id)
@@ -43,7 +43,7 @@ def delete_city(city_id):
     return (jsonify({}), 200)
 
 
-@app_views.route("states/<state_id>/cities", strict_slashes=False,
+@app_views.route("/states/<state_id>/cities", strict_slashes=False,
                  methods=['POST'])
 def add_new_city(state_id):
     """ add new city"""
@@ -60,7 +60,7 @@ def add_new_city(state_id):
     return (jsonify(new_city.to_dict()), 201)
 
 
-@app_views.route("cities/<city_id>", strict_slashes=False, methods=['PUT'])
+@app_views.route("/cities/<city_id>", strict_slashes=False, methods=['PUT'])
 def update_city(city_id):
     """ update city"""
     obj = storage.get(City, city_id)
