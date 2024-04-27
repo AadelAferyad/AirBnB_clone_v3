@@ -52,10 +52,10 @@ def add_new_city(state_id):
         abort(404)
     data = request.get_json(force=True, silent=True)
     if not data:
-        abort("Not a JSON", 400)
+        abort(400, "Not a JSON")
     if 'name' not in data:
-        abort("Missing name", 400)
-    new_city = City(**data)
+        abort(400, "Missing name")
+    new_city = City(state_id=obj.id, **data)
     new_city.save()
     return (jsonify(new_city.to_dict()), 201)
 
@@ -68,7 +68,7 @@ def update_city(city_id):
         abort(404)
     json_data = request.get_json(force=True, silent=True)
     if not json_data:
-        abort("Not a JSON", 400)
+        abort(400, "Not a JSON")
     obj['name'] = json_data.get("name", obj['name'])
     obj.save()
     return (jsonify(obj.to_dict()), 200)
