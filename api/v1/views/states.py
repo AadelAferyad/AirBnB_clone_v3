@@ -11,7 +11,7 @@ st.to_dict()
 
 @app_views.route("states", strict_slashes=False,
                  methods=['GET'])
-@app_views.route("states/<int:state_id>", strict_slashes=False,
+@app_views.route("states/<state_id>", strict_slashes=False,
                  methods=['GET'])
 def state(state_id=None):
     """ list state with state id"""
@@ -28,7 +28,7 @@ def state(state_id=None):
         return jsonify(list_of_states)
 
 
-@app_views.route("states/<int:state_id>", strict_slashes=False,
+@app_views.route("states/<state_id>", strict_slashes=False,
                  methods=['DELETE'])
 def state_delete(state_id):
     """ delete state with it's id"""
@@ -54,7 +54,7 @@ def add_state():
     return (jsonify(new_s.to_dict()), 201)
 
 
-@app_views.route("states/<int:state_id>", strict_slashes=False,
+@app_views.route("states/<state_id>", strict_slashes=False,
                  methods=['PUT'])
 def update_state(state_id):
     """ ipdate state """
