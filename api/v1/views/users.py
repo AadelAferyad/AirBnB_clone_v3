@@ -10,7 +10,7 @@ from flask import abort, request, jsonify
                  methods=['GET'])
 @app_views.route("users/<user_id>", strict_slashes=False,
                  methods=['GET'])
-def amenities(user_id=None):
+def user(user_id=None):
     """ list users with user_id"""
     list_of_user = []
     if (user_id):
@@ -27,7 +27,7 @@ def amenities(user_id=None):
 
 @app_views.route("users/<user_id>", strict_slashes=False,
                  methods=['DELETE'])
-def amenity_delete(user_id):
+def user_delete(user_id):
     """ delete user with it's id"""
     obj = storage.get(User, user_id)
     if obj is None:
@@ -39,7 +39,7 @@ def amenity_delete(user_id):
 
 @app_views.route("users", strict_slashes=False,
                  methods=['POST'])
-def add_amenity():
+def add_user():
     """ add new users"""
     data = request.get_json(force=True, silent=True)
     if not data:
@@ -53,7 +53,7 @@ def add_amenity():
 
 @app_views.route("users/<user_id>", strict_slashes=False,
                  methods=['PUT'])
-def update_amenity(user_id):
+def update_user(user_id):
     """ update user """
     key_igonre = ['email', 'id', 'updated_at', 'created_at']
 
