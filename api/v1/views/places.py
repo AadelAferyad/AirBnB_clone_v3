@@ -31,7 +31,7 @@ def places_with_id(place_id=None):
     """ list places with place_id"""
     if place_id:
         dic = storage.get(Place, place_id)
-        if dic in None:
+        if dic is None:
             abort(404)
         return dic.to_dict()
 
